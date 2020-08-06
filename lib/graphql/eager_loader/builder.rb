@@ -36,7 +36,9 @@ module Graphql
           builder = new(selection: selection, model: model)
 
           if builder.association?
-            includes[builder.association_name] = builder.includes
+            hash = builder.includes
+            hash[:blob] ||= {} if builder.active_storage_attachment?
+            includes[builder.association_name] = hash
           else
             includes.merge!(builder.includes)
           end
@@ -49,9 +51,7 @@ module Graphql
       end
 
       def includes
-        hash = {}
-        hash[:blob] = {} if active_storage_attachment?
-        hash.merge self.class.call(selections: selection.selections, model: includes_model)
+        self.class.call(selections: selection.selections, model: includes_model)
       end
 
       def association?
@@ -60,6 +60,10 @@ module Graphql
 
       def association_name
         association.name
+      end
+
+      def active_storage_attachment?
+        model.reflect_on_attachment(field_name).present?
       end
 
       private
@@ -77,10 +81,6 @@ module Graphql
         return model.reflect_on_association("#{field_name}_attachment") if active_storage_attachment?
 
         model.reflect_on_association(field_name)
-      end
-
-      def active_storage_attachment?
-        model.reflect_on_attachment(field_name).present?
       end
 
       def use_custom_method?
