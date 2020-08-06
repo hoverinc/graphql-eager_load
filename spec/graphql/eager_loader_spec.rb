@@ -91,7 +91,7 @@ RSpec.describe Graphql::EagerLoader do
         expect(options).to eq(
           proposal_documents: {},
           jobs: { user: {} },
-          photo_attachment: {}
+          photo_attachment: { blob: {} }
         )
       end
     end

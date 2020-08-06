@@ -49,7 +49,9 @@ module Graphql
       end
 
       def includes
-        self.class.call(selections: selection.selections, model: includes_model)
+        hash = {}
+        hash[:blob] = {} if active_storage_attachment?
+        hash.merge self.class.call(selections: selection.selections, model: includes_model)
       end
 
       def association?
