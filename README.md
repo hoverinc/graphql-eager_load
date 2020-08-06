@@ -10,7 +10,7 @@ eager load the associations of records returned in your graphql resolver.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'graphql-eager-loader', git: 'https://github.com/hoverinc/graphql-eager-loader', require: 'graphql/eager_loader'
+gem 'graphql-eager)loader', git: 'https://github.com/hoverinc/graphql-eager)loader'
 ```
 
 And then execute:
