@@ -36,7 +36,7 @@ module Graphql
           builder = new(selection: selection, model: model)
 
           if builder.association?
-            includes[builder.field_name] = builder.includes
+            includes[builder.association_name] = builder.includes
           else
             includes.merge!(builder.includes)
           end
@@ -56,8 +56,8 @@ module Graphql
         association.present?
       end
 
-      def field_name
-        selection.name
+      def association_name
+        association.name
       end
 
       private
@@ -65,13 +65,20 @@ module Graphql
       attr_reader :selection, :model
 
       def includes_model
+        return ActiveStorage::Attachment if active_storage_attachment?
+
         association&.klass || model
       end
 
       def association
         return if use_custom_method?
+        return model.reflect_on_association("#{field_name}_attachment") if active_storage_attachment?
 
         model.reflect_on_association(field_name)
+      end
+
+      def active_storage_attachment?
+        model.reflect_on_attachment(field_name).present?
       end
 
       def use_custom_method?
@@ -90,6 +97,10 @@ module Graphql
 
       def field_owner
         selection.field.owner
+      end
+
+      def field_name
+        selection.name
       end
     end
   end

@@ -65,7 +65,7 @@ RSpec.describe Graphql::EagerLoader do
       end
     end
 
-    describe 'cursor based pagination, has_many, belongs_to' do
+    describe 'cursor based pagination, has_many, belongs_to, attachment' do
       let(:model) { ::User }
       let(:query_string) do
         <<-QUERY
@@ -73,6 +73,7 @@ RSpec.describe Graphql::EagerLoader do
           users {
             nodes {
               id
+              photo { filename }
               jobs {
                 id
                 user { id }
@@ -89,7 +90,8 @@ RSpec.describe Graphql::EagerLoader do
       it do
         expect(options).to eq(
           proposal_documents: {},
-          jobs: { user: {} }
+          jobs: { user: {} },
+          photo_attachment: {}
         )
       end
     end
