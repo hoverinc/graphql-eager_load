@@ -1,4 +1,4 @@
-# Graphql::Eager::Loader
+# Graphql::EagerLoader
 
 This gem traverses your graphql query looking for fields on types that match
 associations on those types. For each field found to be an association, this
