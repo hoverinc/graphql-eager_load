@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Graphql
-  module EagerLoader
+  module EagerLoad
     VERSION = '0.2.2'
   end
 end

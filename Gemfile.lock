@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    graphql-eager_loader (0.2.2)
+    graphql-eager_load (0.2.2)
 
 GEM
   remote: https://rubygems.org/
@@ -188,7 +188,7 @@ PLATFORMS
 DEPENDENCIES
   combustion
   graphql
-  graphql-eager_loader!
+  graphql-eager_load!
   rails
   rake
   rspec

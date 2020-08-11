@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Graphql
-  module EagerLoader
+  module EagerLoad
     #
     # Given
     #   - An initial set of includes, a hash

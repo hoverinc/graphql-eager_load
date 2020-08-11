@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in graphql-eager-loader.gemspec
+# Specify your gem's dependencies in graphql-eager-load.gemspec
 gemspec
 
 gem 'graphql'
