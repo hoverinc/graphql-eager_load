@@ -2,7 +2,7 @@
 
 require 'bundler'
 require 'bundler/setup'
-require 'graphql/eager_loader'
+require 'graphql/eager_load'
 
 Bundler.require :default, :development
 

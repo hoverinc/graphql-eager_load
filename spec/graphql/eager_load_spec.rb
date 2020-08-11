@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe Graphql::EagerLoader do
+RSpec.describe Graphql::EagerLoad do
   it 'has a version number' do
-    expect(Graphql::EagerLoader::VERSION).not_to be nil
+    expect(Graphql::EagerLoad::VERSION).not_to be nil
   end
 
   describe '.call' do
@@ -16,7 +16,7 @@ RSpec.describe Graphql::EagerLoader do
       closure_model = model
 
       Class.new do
-        include Graphql::EagerLoader::Resolver
+        include Graphql::EagerLoad::Resolver
         eager_load_model closure_model
 
         define_method(:context) do

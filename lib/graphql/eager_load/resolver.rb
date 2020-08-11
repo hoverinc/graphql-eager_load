@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Graphql
-  module EagerLoader
+  module EagerLoad
     # Automatically included in any subclasses of Resolvers::Base
     module Resolver
       def self.included(klass)

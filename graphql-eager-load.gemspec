@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
-require_relative 'lib/graphql/eager_loader/version'
+require_relative 'lib/graphql/eager_load/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'graphql-eager_loader'
-  spec.version       = Graphql::EagerLoader::VERSION
+  spec.name          = 'graphql-eager_load'
+  spec.version       = Graphql::EagerLoad::VERSION
   spec.authors       = ['Elise Wood']
   spec.email         = ['elise@hover.to']
 
   spec.summary       = 'Generate ActiveRecord eager loading options from GraphQL Queries.'
   spec.description   = ''
-  spec.homepage      = 'https://github.com/hoverinc/graphql-eager-loader.'
+  spec.homepage      = 'https://github.com/hoverinc/graphql-eager-load'
   spec.license       = 'MIT'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.3.0')
 
-  # spec.metadata['allowed_push_host'] = 'github.com/hoverinc/graphql-eager-loader'
+  # spec.metadata['allowed_push_host'] = 'github.com/hoverinc/graphql-eager-load'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/hoverinc/graphql-eager-loader'
-  spec.metadata['changelog_uri'] = 'https://github.com/hoverinc/graphql-eager-loader/commits'
+  spec.metadata['source_code_uri'] = 'https://github.com/hoverinc/graphql-eager-load'
+  spec.metadata['changelog_uri'] = 'https://github.com/hoverinc/graphql-eager-load/commits'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
