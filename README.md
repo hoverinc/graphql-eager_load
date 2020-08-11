@@ -3,7 +3,7 @@
 This gem assumes you are using [Rails](http://rubyonrails.org) and [ActiveRecord](https://guides.rubyonrails.org/active_record_querying.html). And that your GraphQL types and fields map as closely to your data model as possible. It uses those assumptions, or conventions, to handle a N+1 prevention for you.
 
 It does so by traversing your graphql query looking for fields on types that match
-associations on those types' corresponding models.. For each field found to be an association, this
+associations on those types' corresponding models. For each field found to be an association, this
 gem adds those associations to an [ActiveRecord::QueryMethods#includes](https://api.rubyonrails.org/classes/ActiveRecord/QueryMethods.html#method-i-includes) hash. That hash can then be used to
 eager load the associations of records returned in your graphql resolver.
 
