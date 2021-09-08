@@ -95,5 +95,26 @@ RSpec.describe Graphql::EagerLoad do
         )
       end
     end
+
+    describe 'custom_associations_for_fields' do
+      let(:model) { ::User }
+      let(:query_string) do
+        <<-QUERY
+        query {
+          users {
+            nodes {
+              email
+            }
+          }
+        }
+        QUERY
+      end
+
+      it 'includes the specified associations' do
+        expect(options).to eq(
+          jobs: {}
+        )
+      end
+    end
   end
 end

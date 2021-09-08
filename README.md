@@ -74,6 +74,27 @@ users {
 
 The output of the `#associations_to_eager_load` helper method would be `{estimates: {}, profile_photo: {blob: {}}`. Without the `.allow_include_builder_fields` class method the output would be `{estimates: {}}`.
 
+If you have a field that is derived from an association, but the association is not included in the query, you can define a `#custom_associations_for_fields` method to specify which associations to include for a specific field.
+
+```ruby
+module Types
+  class User < Types::Base
+    field :estimates, [Types::Estimate], null: false
+    field :org_names, [String], null: true
+    
+    def org_names
+      object.orgs.map(&:name)
+    end
+    
+    def self.custom_associations_for_fields
+      {
+        org_names: [:org]
+      }
+    end
+  end
+end
+```
+
 ## Development
 
 After checking out the repo, run `bundle` to install dependencies. Then, run `bundle exec rake spec` to run the tests. You can also run `bundle exec bin/console` for an interactive prompt that will allow you to experiment.

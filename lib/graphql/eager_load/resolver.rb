@@ -12,7 +12,7 @@ module Graphql
         graphql_eager_load_options(model: self.class.class_variable_get(:@@eager_load_model))
       end
 
-      def graphql_eager_load_options(selections: context.query.lookahead.selections, model:)
+      def graphql_eager_load_options(model:, selections: context.query.lookahead.selections)
         Builder.call(selections: selections, model: model)
       end
 

@@ -7,6 +7,7 @@ module Types
     field :proposal_documents, [ProposalDocument], null: false
     field :order, Order, null: false
     field :photo, Types::File, null: true
+    field :email, String, null: true
 
     def order
       { code: SecureRandom.uuid }
@@ -18,6 +19,12 @@ module Types
 
     def self.allow_include_builder_fields
       [:photo]
+    end
+
+    def self.custom_associations_for_fields
+      {
+        email: [:jobs]
+      }
     end
   end
 end
