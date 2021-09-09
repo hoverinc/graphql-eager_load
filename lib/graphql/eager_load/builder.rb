@@ -42,6 +42,8 @@ module Graphql
           else
             includes.merge!(builder.includes)
           end
+
+          includes.deep_merge!(builder.custom_associations_for_selection)
         end
       end
 
@@ -64,6 +66,16 @@ module Graphql
 
       def active_storage_attachment?
         model.reflect_on_attachment(field_name).present?
+      end
+
+      def custom_associations_for_selection
+        return {} unless field_owner.respond_to?(:custom_associations_for_fields)
+
+        custom_associations = field_owner.custom_associations_for_fields[field_name.to_sym]
+
+        return {} unless custom_associations
+
+        custom_associations.map { |association| [association, {}] }.to_h
       end
 
       private
