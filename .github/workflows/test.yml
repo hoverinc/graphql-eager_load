@@ -11,13 +11,13 @@ jobs:
         uses: actions/checkout@master
 
       - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+        uses: actions/setup-ruby@e932e7af67fc4a8fc77bd86b744acd4e42fe3543 # v1
         with:
           ruby-version: '2.7.x'
           bundler-cache: true
 
       - name: Cache bundled gems
-        uses: actions/cache@v2
+        uses: actions/cache@8492260343ad570701412c2f464a5877dc76bace # v2
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile.lock') }}
