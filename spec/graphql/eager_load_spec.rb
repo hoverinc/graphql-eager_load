@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ostruct'
+
 RSpec.describe Graphql::EagerLoad do
   it 'has a version number' do
     expect(Graphql::EagerLoad::VERSION).not_to be nil
