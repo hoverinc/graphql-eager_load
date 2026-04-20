@@ -11,23 +11,10 @@ jobs:
         uses: actions/checkout@master
 
       - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@4c56a21280b36d862b5fc31348f463d60bdc55d5 # v1.301.0
         with:
-          ruby-version: '2.7.x'
+          ruby-version: '3.4'
           bundler-cache: true
-
-      - name: Cache bundled gems
-        uses: actions/cache@v2
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Install Ruby gems
-        run: |
-          bundle config path vendor/bundle
-          bundle install
 
       - name: Run Rspec
         run: |
